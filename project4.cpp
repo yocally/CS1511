@@ -22,6 +22,13 @@ int computeDifference(int sHours, int sMinutes, bool sIsAM, int jHours, int jMin
         // how?
     }
 
+    if (sHours < jHours) {
+        result += (jHours - sHours) * 60;
+    }
+    else {
+        // how?
+    }
+
     return result;
 }
 int main() {
@@ -41,5 +48,6 @@ int main() {
     cin >> ans;
     if (ans == 'y') { jump::isAM = true; } else { jump::isAM = false; }
 
-    cout << "Differense in minutes: " << computeDifference(start::hours, start::minutes, start::isAM, jump::hours, jump::minutes, jump::isAM);
+    cout << "Differense in minutes: " <<
+    computeDifference(start::hours, start::minutes, start::isAM, jump::hours, jump::minutes, jump::isAM);
 }
