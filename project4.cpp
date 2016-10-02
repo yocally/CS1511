@@ -1,3 +1,18 @@
+/**
+    Project 4
+    @version 1.0
+    @author Cally Sibben
+
+    @description
+    Given a start time and an end time, assuming they are within 24 hours
+    of eachother, it will calculate the ammount of time between start
+    and finish. Something about a time machine? I don't know
+
+    @notes
+    Oh my god I could do this whole thing with for loops and it would be
+    REALLY FUCKIN' JANKY but it'd work. Don't do that
+*/
+
 #include <iostream>
 
 using namespace std;
@@ -15,6 +30,8 @@ namespace jump {
 
 int computeDifference(int sHours, int sMinutes, bool sIsAM, int jHours, int jMinutes, bool jIsAM) {
     int result;
+
+    // Check and compute the minutes
     if (sMinutes < jMinutes) {
         result = jMinutes - sMinutes;
     }
@@ -22,6 +39,7 @@ int computeDifference(int sHours, int sMinutes, bool sIsAM, int jHours, int jMin
         // how?
     }
 
+    // Check and compute the hours
     if (sHours < jHours) {
         result += (jHours - sHours) * 60;
     }
@@ -29,6 +47,16 @@ int computeDifference(int sHours, int sMinutes, bool sIsAM, int jHours, int jMin
         // how?
     }
 
+    // Account for AM/PM
+    if (jIsAM == sIsAM) {
+        // if they're the same, no biggie
+    }
+    else if (sIsAM && !jIsAM) {
+        // If the start time is AM, and the end is PM, add 12 hours
+        // Note, this will work a quarter of the time, doesn't account for
+        // sHours > jHours
+        result += 12*60
+    }
     return result;
 }
 int main() {
