@@ -32,19 +32,27 @@ int computeDifference(int sHours, int sMinutes, bool sIsAM, int jHours, int jMin
     int result;
 
     // Check and compute the minutes
-    if (sMinutes < jMinutes) {
+    // Minutes should be working flawlessly, except that when given 0 and 0
+    // it thinks that it's a full hour
+    if ((sMinutes == 0) && (jMinutes == 0)) {
+        // Place holder so that nothing happens if they're both 0
+    }
+    else if (sMinutes < jMinutes) {
         result = jMinutes - sMinutes;
     }
     else {
-        // how?
+        result = (60 - sMinutes) + jMinutes;
     }
 
     // Check and compute the hours
-    if (sHours < jHours) {
-        result += (jHours - sHours) * 60;
+    if ((sHours == 0) && (jHours == 0)) {
+        // Place holder so that nothing happens if they're both 0
+    }
+    else if (sHours < jHours) {
+        result += (jHours - sHours);
     }
     else {
-        // how?
+        result += ((12 - sHours) + jHours);
     }
 
     // Account for AM/PM
@@ -55,10 +63,17 @@ int computeDifference(int sHours, int sMinutes, bool sIsAM, int jHours, int jMin
         // If the start time is AM, and the end is PM, add 12 hours
         // Note, this will work a quarter of the time, doesn't account for
         // sHours > jHours
-        result += 12*60
+        result += 12*60;
+    }
+    else {
+        // If the start is PM and the end is AM, subtract 12 hours
+        // Disclaimer idk if this actually works
+        result -= 12*60
     }
     return result;
 }
+
+
 int main() {
     cout << "Please enter the time you are starting at:\nHours: ";
     cin >> start::hours;
