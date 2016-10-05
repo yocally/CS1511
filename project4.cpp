@@ -11,6 +11,10 @@
     @notes
     Oh my god I could do this whole thing with for loops and it would be
     REALLY FUCKIN' JANKY but it'd work. Don't do that
+
+    FINISHED:
+    The minutes calculation is fully functional
+    The hours calculation is fully functional
 */
 
 #include <iostream>
@@ -38,37 +42,41 @@ int computeDifference(int sHours, int sMinutes, bool sIsAM, int jHours, int jMin
         // Place holder so that nothing happens if they're both 0
     }
     else if (sMinutes < jMinutes) {
+        // If the start minutes are less than the jump minutes, you can
+        // just do straight math to get the result
         result = jMinutes - sMinutes;
     }
     else {
+        // In the case that the start minutes are greather than the jump
+        // minutes, I do not remember how this works
         result = (60 - sMinutes) + jMinutes;
     }
+
 
     // Check and compute the hours
     if ((sHours == 0) && (jHours == 0)) {
         // Place holder so that nothing happens if they're both 0
     }
     else if (sHours < jHours) {
+        // If the start minutes are less than the jump minutes, you can
+        // just do straight math to get the result
         result += (jHours - sHours);
     }
     else {
+        // In the case that the start minutes are greater than the jump
+        // minutes, I do not remember how this works
         result += ((12 - sHours) + jHours);
     }
+
 
     // Account for AM/PM
     if (jIsAM == sIsAM) {
         // if they're the same, no biggie
     }
-    else if (sIsAM && !jIsAM) {
-        // If the start time is AM, and the end is PM, add 12 hours
-        // Note, this will work a quarter of the time, doesn't account for
-        // sHours > jHours
-        result += 12*60;
-    }
     else {
-        // If the start is PM and the end is AM, subtract 12 hours
-        // Disclaimer idk if this actually works
-        result -= 12*60
+        // Because it doesn't matter if we're going am to pm, or
+        // pm to am, we're still jumping ahead 12 hours
+        result += 12*60;
     }
     return result;
 }
