@@ -28,7 +28,7 @@ int main() {
     srand(time(0));
 
     // Get the amount of doors involved in this game
-    cout << "How many door_count are there: ";
+    cout << "How many doors are there: ";
     cin >> door_count;
 
     // For loop generates the doors and pick one
