@@ -23,18 +23,22 @@ int main() {
     // Variable declaration
     int correct = 0, incorrect = 0;
     int correct2 = 0, incorrect2 = 0;
-    int door_count;
+    int door_count, simulations;
     // Seed the generator
     srand(time(0));
 
     // Get the amount of doors involved in this game
     cout << "How many doors are there: ";
     cin >> door_count;
+    cout << "How many simulations do you want to run: ";
+    cin >> simulations;
 
     // For loop generates the doors and pick one
-    for (int i = 0; i < 10000; i++) {
+    for (int i = 0; i < simulations; i++) {
         int door = rand() % door_count + 1;
         int guess = rand() % door_count + 1;
+        // Generate a door and guess with the range one less then the original
+        // door_count
         int door2 = rand() % (door_count - 1) + 1;
         int guess2 = rand() % (door_count - 1) + 1;
         if (door == guess) { correct++; } else { incorrect++; }
