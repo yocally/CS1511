@@ -48,7 +48,7 @@ int main() {
     // Output the stats
     cout << "Stats for staying with your guess:\n";
     cout << "Correct guesses: " << correct << "\nIncorrect guesses: " << incorrect << "\n\n";
-    cout << "Stats for switching door_count:\n";
+    cout << "Stats for switching doors:\n";
     cout << "Correct guesses: " << correct2 << "\nIncorrect guesses: " << incorrect2 << "\n";
 
     return 0;
