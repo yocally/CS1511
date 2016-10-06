@@ -23,7 +23,8 @@ int main() {
     // Variable declaration
     int correct = 0, incorrect = 0;
     int correct2 = 0, incorrect2 = 0;
-    int door_count, simulations;
+    int door_count;
+    double simulations;
     // Seed the generator
     srand(time(0));
 
@@ -35,14 +36,12 @@ int main() {
 
     // For loop generates the doors and pick one
     for (int i = 0; i < simulations; i++) {
-        int door = rand() % door_count + 1;
-        int guess = rand() % door_count + 1;
+        int door = (rand() % door_count) + 1;
+        int guess = (rand() % door_count) + 1;
         // Generate a door and guess with the range one less then the original
         // door_count
-        int door2 = rand() % (door_count - 1) + 1;
-        int guess2 = rand() % (door_count - 1) + 1;
         if (door == guess) { correct++; } else { incorrect++; }
-        if (door2 == guess2) { correct2++; } else { incorrect2++; };
+        if ((rand() % 2) + 1 == (rand() % 2) + 1) { correct2++; } else { incorrect2++; }
     }
 
     // Output the stats
@@ -50,6 +49,9 @@ int main() {
     cout << "Correct guesses: " << correct << "\nIncorrect guesses: " << incorrect << "\n\n";
     cout << "Stats for switching doors:\n";
     cout << "Correct guesses: " << correct2 << "\nIncorrect guesses: " << incorrect2 << "\n";
+
+    cout << "Percentage of wins: " << ((correct / simulations) * 100) << "\n";
+    cout << "Percentage of wins when switching doors: " << ((correct2 / simulations) * 100) << "\n";
 
     return 0;
 }
