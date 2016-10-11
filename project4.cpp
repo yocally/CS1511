@@ -11,6 +11,16 @@
     @notes
     Oh my god I could do this whole thing with for loops and it would be
     REALLY FUCKIN' JANKY but it'd work. Don't do that
+    start:
+    hours:9
+    minutes:30
+    isAM:n
+
+    jump:
+    hours:3
+    minutes:15
+    isAM:y
+    ^^This doesn't work
 
     FINISHED:
     The minutes calculation is fully functional
@@ -55,6 +65,7 @@ int computeDifference(int sHours, int sMinutes, bool sIsAM, int jHours, int jMin
         result = (60 - sMinutes) + jMinutes;
     }
 
+    cout << "Post minutes calculation: " << result << "\n";
 
     // Check and compute the hours
     if ((sHours == 0) && (jHours == 0)) {
@@ -68,8 +79,10 @@ int computeDifference(int sHours, int sMinutes, bool sIsAM, int jHours, int jMin
     else {
         // In the case that the start minutes are greater than the jump
         // minutes, I do not remember how this works
-        result += ((12 - sHours) + jHours);
+        result += ((12 - sHours) + jHours) * 60;
     }
+
+    cout << "Post hours calculation: " << result << "\n";
 
 
     // Account for AM/PM
@@ -79,7 +92,7 @@ int computeDifference(int sHours, int sMinutes, bool sIsAM, int jHours, int jMin
     else {
         // Because it doesn't matter if we're going am to pm, or
         // pm to am, we're still jumping ahead 12 hours
-        result += 12*60;
+        // result += 12*60;
     }
     return result;
 }
