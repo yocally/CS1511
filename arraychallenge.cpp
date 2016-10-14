@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
-#include <cmath>
 #include <ctime>
 #include <cstdlib>
+#include <printf.h>
 
 using namespace std;
 
@@ -48,8 +48,10 @@ void sentence();
 
 int main() {
     srand(time(0));
-    sentence();
-    cout << endl;
+    for(int i = 0; i < 20; i++) {
+        sentence();
+        cout << endl;
+    }
 }
 
 void word(string stringarray[], int sizearray)
