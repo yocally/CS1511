@@ -60,19 +60,20 @@ void readTime(int& m, int& h, bool& is) {
 }
 
 int computeDifference (int sHours, int jHours, int sMinutes, int jMinutes, bool sIsAM, bool jIsAM) {
+    // Variables that represent the cumulative times
     int start, jump;
 
+    // Esentially how this works is figures the amount of minutes from midnight and subracts one from the other
+    // Only takes about 3 lines
     start = sMinutes;
     start += sHours*60;
     if (!sIsAM) { start += 12*60; }
 
-    cout << "Start is: " << start << "\n";
     jump = jMinutes;
     jump += jHours*60;
     if (!jIsAM) { jump += 12*60; }
 
-    cout << "Jump is: " << jump << "\n";
-
+    // Here we make sure that we don't end up with a negative number, don't remember exactly how it works
     if(start < jump) {
         return (jump - start);
     }
