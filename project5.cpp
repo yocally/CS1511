@@ -48,6 +48,20 @@ string split(string& src, char delim, int index)
     return build;
 }
 
+void parseFile()
+{
+    ifstream inFile("babynames.txt");
+    string line;
+    int x = 0;
+    while(getline(inFile, line))
+    {
+        iRank[x] = split(line, ' ', 0);
+        girlnames[x] = split(line, ' ', 1);
+        boynames[x] = split(line, ' ', 2);
+        x++;
+    }
+}
 int main() {
-
+    parseFile();
+    cout << iRank[19];
 }
