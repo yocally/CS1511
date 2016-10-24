@@ -21,12 +21,11 @@
 
 using namespace std;
 
-string iRank[1000];
-string girlnames[1000];
-string boynames[1000];
-string test = "Hello World test";
+string iRank[999];
+string boynames[999];
+string girlnames[999];
 
-// string split(string srcString, char delimeter, )
+// string split(string srcString, char delimeter, int index)
 string split(string& src, char delim, int index)
 {
     int x = 0;
@@ -56,12 +55,29 @@ void parseFile()
     while(getline(inFile, line))
     {
         iRank[x] = split(line, ' ', 0);
-        girlnames[x] = split(line, ' ', 1);
-        boynames[x] = split(line, ' ', 2);
+        boynames[x] = split(line, ' ', 1);
+        girlnames[x] = split(line, ' ', 2);
         x++;
     }
 }
+string lower(string& src)
+{
+    string build;
+    for(int i = 0; i < src.length(); i++)
+    {
+        build += tolower(src[i]);
+    }
+    return build;
+}
+string uInput()
+{
+    string in;
+    cout << "Please enter the name you would like to search for, or '!' to quit: ";
+    cin >> in;
+    return in;
+}
 int main() {
     parseFile();
-    cout << iRank[19];
+    cout << lower(boynames[19]) << "\n";
+    //cout << uInput();
 }
