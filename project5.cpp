@@ -21,36 +21,33 @@
 
 using namespace std;
 
-string rank[1000];
+string iRank[1000];
 string girlnames[1000];
 string boynames[1000];
+string test = "Hello World test";
 
-string split(string srcString, char delimeter, )
-int main() {
-    fstream infile;
-    string line;
-    infile.open("babynames.txt");
-
-    int i = 0;
-    while(getline(infile, line))
+// string split(string srcString, char delimeter, )
+string split(string& src, char delim, int index)
+{
+    int x = 0;
+    string build;
+    for (int i = 0; i < src.length(); i++)
     {
-        int x = 0;
-        while (line[x] != ' ')
+        if(src.at(i) == delim)
         {
-            rank[i] += line[x];
+            if (x == index)
+            {
+                break;
+            }
             x++;
+            build = "";
+            continue;
         }
-        x++;
-        while (line[x] != ' ')
-        {
-            boynames[i] += line[x];
-        }
-        x++;
-        while (line[x] != ' ')
-        {
-            girlnames[i] += line[x];
-        }
-        i++;
+        build += src.at(i);
     }
-    cout << rank[149] << " " << boynames[149] << " " << girlnames[149];
+    return build;
+}
+
+int main() {
+
 }

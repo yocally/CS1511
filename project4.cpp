@@ -68,11 +68,12 @@ int computeDifference (int sHours, int jHours, int sMinutes, int jMinutes, bool 
     start = sMinutes;
     start += sHours*60;
     if (!sIsAM) { start += 12*60; }
+    cout << "Start time: " << start << "\n";
 
     jump = jMinutes;
     jump += jHours*60;
     if (!jIsAM) { jump += 12*60; }
-
+    cout << "Jump time: " << jump << "\n";
     // Here we make sure that we don't end up with a negative number, don't remember exactly how it works
     if(start < jump) {
         return (jump - start);
