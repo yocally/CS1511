@@ -16,6 +16,7 @@
 
     @TODO
     I can probably use pointers to pass an array to a function
+    Rewrite the while loop in main so it doesn't search for the quit character
 */
 
 #include <iostream>
@@ -104,6 +105,24 @@ int main() {
     while(running)
     {
         string in = uInput();
-        cout << uSearch(in, boynames);
+        int brank = uSearch(in, boynames);
+        int grank = uSearch(in, girlnames);
+        if(brank == -1)
+        {
+            cout << in << " is not ranked among the top 1000 boy names\n";
+        }
+        else
+        {
+            cout << in << " is ranked " << brank << " in popularity among the boys\n";
+        }
+
+        if(grank == -1)
+        {
+            cout << in << " is not ranked among the top 1000 girl names\n";
+        }
+        else
+        {
+            cout << in << " is ranked " << grank << " in popularity among the girls\n";
+        }
     }
 }
