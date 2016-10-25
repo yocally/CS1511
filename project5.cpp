@@ -13,6 +13,9 @@
     @notes
     So aparently there is no split string function, and that's pretty terrible. If it was up to
     me, I'd call a python file just for the split function.
+
+    @TODO
+    I can probably use pointers to pass an array to a function
 */
 
 #include <iostream>
@@ -74,6 +77,12 @@ string uInput()
     string in;
     cout << "Please enter the name you would like to search for, or '!' to quit: ";
     cin >> in;
+
+    if(in == "!")
+    {
+        running = false;
+    }
+
     return in;
 }
 
@@ -88,11 +97,13 @@ int uSearch(string& target, string a[])
             index = i;
         }
     }
+    return index;
 }
 int main() {
     parseFile();
     while(running)
     {
-        uSearch(uInput());
+        string in = uInput();
+        cout << uSearch(in, boynames);
     }
 }
