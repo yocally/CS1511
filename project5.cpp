@@ -24,7 +24,7 @@ using namespace std;
 string iRank[999];
 string boynames[999];
 string girlnames[999];
-
+bool running = true;
 // string split(string srcString, char delimeter, int index)
 string split(string& src, char delim, int index)
 {
@@ -76,8 +76,23 @@ string uInput()
     cin >> in;
     return in;
 }
+
+int uSearch(string& target, string a[])
+{
+    int index = -1;
+
+    for(int i = 0; i < 999; i++)
+    {
+        if(lower(target) == lower(a[i]))
+        {
+            index = i;
+        }
+    }
+}
 int main() {
     parseFile();
-    cout << lower(boynames[19]) << "\n";
-    //cout << uInput();
+    while(running)
+    {
+        uSearch(uInput());
+    }
 }
