@@ -16,7 +16,6 @@
 
     @TODO
     I can probably use pointers to pass an array to a function
-    Rewrite the while loop in main so it doesn't search for the quit character
 */
 
 #include <iostream>
@@ -32,8 +31,14 @@ bool running = true;
 // string split(string srcString, char delimeter, int index)
 string split(string& src, char delim, int index)
 {
+    // Oh boy a split function, because this can't be redone to be a thousand time better
+    // Alright, x holds the value of the index that we're currently on, i iterates through the string
+    // build holds the current string of the given index
     int x = 0;
     string build;
+
+    // Grand old for loop iterates through the string char by char
+    // Literally have no idea how this works, probably should've documented as I wrote
     for (int i = 0; i < src.length(); i++)
     {
         if(src.at(i) == delim)
@@ -48,13 +53,19 @@ string split(string& src, char delim, int index)
         }
         build += src.at(i);
     }
+    // Returns the string we were looking for
     return build;
 }
 
 void parseFile()
 {
+    // this is the file object, can't actually figure out how to pass a string into the file name, not sure why
+    // Woo it's the haunted compiler that can't convert string to string
+    // Line is to humor the getline function later on, holds the current line of the file we're on
     ifstream inFile("babynames.txt");
     string line;
+    // Could turn this into a for loop, don't really want to, sue me. x is just so we properly iterate through
+    // the arrays we're building
     int x = 0;
     while(getline(inFile, line))
     {
@@ -64,8 +75,11 @@ void parseFile()
         x++;
     }
 }
+
 string lower(string& src)
 {
+    // goes through a string and makes every character lower, I use the += operator because I forgot how to
+    // create a string of a given size. Besides, functionality shouldn't be affected, right?
     string build;
     for(int i = 0; i < src.length(); i++)
     {
@@ -73,16 +87,13 @@ string lower(string& src)
     }
     return build;
 }
+
 string uInput()
 {
+    // Didn't want this code cluttering up the while loop so here it is, I hope this doesn't need explaining
     string in;
     cout << "Please enter the name you would like to search for, or '!' to quit: ";
     cin >> in;
-
-    if(in == "!")
-    {
-        running = false;
-    }
 
     return in;
 }
@@ -100,11 +111,18 @@ int uSearch(string& target, string a[])
     }
     return index;
 }
+
 int main() {
     parseFile();
     while(running)
     {
         string in = uInput();
+
+        if(in == "!")
+        {
+            running = false;
+            continue;
+        }
         int brank = uSearch(in, boynames);
         int grank = uSearch(in, girlnames);
         if(brank == -1)
