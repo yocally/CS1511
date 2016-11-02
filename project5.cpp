@@ -100,6 +100,7 @@ string uInput()
 
 int uSearch(string& target, string a[])
 {
+	// Pretty standard, if the given target is found it will return the index of the target within the given array, if not found it returns -1
     int index = -1;
 
     for(int i = 0; i < 999; i++)
@@ -113,18 +114,27 @@ int uSearch(string& target, string a[])
 }
 
 int main() {
+	// Parse the file to populate the arrays
     parseFile();
+	
+	// Main while loop for the program, keeps it running so you can search for multiple targets
     while(running)
     {
+		// Takes user input
         string in = uInput();
 
+		// Checks to see if the quit character was passed, if so it will set the running bool to false and continue the loop to skip the searches
         if(in == "!")
         {
             running = false;
             continue;
         }
+		
+		// Searches both the arrays for the target
         int brank = uSearch(in, boynames);
         int grank = uSearch(in, girlnames);
+		
+		// Output the results accordingly
         if(brank == -1)
         {
             cout << in << " is not ranked among the top 1000 boy names\n";
